@@ -177,10 +177,12 @@ export const HeroSection: React.FC = () => {
     <div className="xero-hero-root">
       {/* 1. Navbar */}
       <nav className="xero-nav">
-        <a href="#root" className="nav-logo">
-          Xero
-        </a>
+        {/* Logo */}
+        <div className="flex items-center">
+          <img src="/images/logo.png" alt="Logo" className="nav-brand-logo" />
+        </div>
 
+        {/* Hamburger Menu Toggle */}
         <button
           className={`menu-toggle ${menuActive ? 'active' : ''}`}
           onClick={() => setMenuActive(!menuActive)}
@@ -190,32 +192,61 @@ export const HeroSection: React.FC = () => {
           <span></span>
         </button>
 
+        {/* Navigation Menu Overlay */}
         <div className={`nav-menu ${menuActive ? 'active' : ''}`}>
-          <ul className="nav-links">
-            <li>
-              <a href="#method" onClick={() => setMenuActive(false)}>
-                Method
-              </a>
-            </li>
-            <li>
-              <a href="#pricing" onClick={() => setMenuActive(false)}>
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a href="#docs" onClick={() => setMenuActive(false)}>
-                Docs
-              </a>
-            </li>
-          </ul>
+          {/* Centered Pill Menu (Desktop only) */}
+          <div className="nav-pill-menu">
+            <a href="#root" className="pill-item active" onClick={() => setMenuActive(false)}>
+              Home
+            </a>
+            <a href="#projects" className="pill-item" onClick={() => setMenuActive(false)}>
+              Works
+            </a>
+            <a href="#services" className="pill-item" onClick={() => setMenuActive(false)}>
+              Services
+            </a>
+            <a href="#about" className="pill-item" onClick={() => setMenuActive(false)}>
+              About
+            </a>
+            <a href="#contact" className="pill-item" onClick={() => setMenuActive(false)}>
+              Contact
+            </a>
+          </div>
 
           <div className="nav-actions">
-            <a href="#login" className="btn-login" onClick={() => setMenuActive(false)}>
-              Login
-            </a>
-            <a href="#signup" className="btn-signup" onClick={() => setMenuActive(false)}>
-              Sign Up
-            </a>
+            {/* Stacked menu links (Mobile only) */}
+            <div className="mobile-links-only">
+              <a href="#root" className="mobile-link" onClick={() => setMenuActive(false)}>
+                Home
+              </a>
+              <a href="#projects" className="mobile-link" onClick={() => setMenuActive(false)}>
+                Works
+              </a>
+              <a href="#services" className="mobile-link" onClick={() => setMenuActive(false)}>
+                Services
+              </a>
+              <a href="#about" className="mobile-link" onClick={() => setMenuActive(false)}>
+                About
+              </a>
+              <a href="#contact" className="mobile-link" onClick={() => setMenuActive(false)}>
+                Contact
+              </a>
+            </div>
+
+            {/* HOW TO START? Button */}
+            <button
+              onClick={() => {
+                setMenuActive(false);
+                const element = document.getElementById('contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="btn-start"
+            >
+              <span className="dot"></span>
+              <span>HOW TO START?</span>
+            </button>
           </div>
         </div>
       </nav>
@@ -305,8 +336,9 @@ export const HeroSection: React.FC = () => {
         {/* Hero Text */}
         <div className="hero-content">
           <h1 className="hero-heading">
-            The simple way
-            <strong>encryption your data</strong>
+            Digital design &
+            <br />
+            development agency
           </h1>
           <p className="hero-sub">
             Fully managed data encrypting service and annotation
