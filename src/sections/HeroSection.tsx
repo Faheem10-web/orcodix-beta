@@ -179,7 +179,7 @@ export const HeroSection: React.FC = () => {
       <nav className="xero-nav">
         {/* Logo */}
         <div className="flex items-center">
-          <img src="/images/logo.png" alt="Logo" className="nav-brand-logo" />
+          <img src="/images/Group 16.png" alt="Logo" className="nav-brand-logo" />
         </div>
 
         {/* Hamburger Menu Toggle */}
@@ -267,11 +267,11 @@ export const HeroSection: React.FC = () => {
               </filter>
 
               <linearGradient id="beam-gradient" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#b04090" stopOpacity="0" />
-                <stop offset="20%" stopColor="#b04090" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#FE6903" stopOpacity="0" />
+                <stop offset="20%" stopColor="#FE6903" stopOpacity="0.8" />
                 <stop offset="50%" stopColor="#fff" stopOpacity="1" />
-                <stop offset="80%" stopColor="#c8a0e0" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#c8a0e0" stopOpacity="0" />
+                <stop offset="80%" stopColor="#FE6903" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#FE6903" stopOpacity="0" />
               </linearGradient>
             </defs>
 
@@ -336,9 +336,11 @@ export const HeroSection: React.FC = () => {
         {/* Hero Text */}
         <div className="hero-content">
           <h1 className="hero-heading">
-            Digital design &
+            Digital design <span className="text-orange">&</span>
             <br />
-            development agency
+            <span style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+              development <span className="text-orange">agency</span>
+            </span>
           </h1>
           <p className="hero-sub">
             Fully managed data encrypting service and annotation
@@ -353,57 +355,130 @@ export const HeroSection: React.FC = () => {
 
       {/* 3. Brands Row */}
       <div className="brands">
-        {/* Expedia */}
-        <div className="brand-item">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="12" r="10" fill="currentColor" />
-            <path fill="var(--bg)" d="M8 9h8v2H8zm0 4h6v2H8z" />
-          </svg>
-          <span>Expedia</span>
-        </div>
-
-        {/* Asana */}
-        <div className="brand-item">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="7" r="4" />
-            <circle cx="5" cy="16" r="3.5" />
-            <circle cx="19" cy="16" r="3.5" />
-          </svg>
-          <span>asana</span>
-        </div>
-
-        {/* Zenefits */}
-        <div className="brand-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="4,8 20,8" />
-            <polyline points="8,12 16,12" />
-            <polyline points="4,16 20,16" />
-          </svg>
-          <span>zenefits</span>
-        </div>
-
-        {/* HubSpot */}
-        <div className="brand-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
-            <circle cx="8.5" cy="8.5" r="2" />
-            <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
-          </svg>
-          <span>
-            HubSp<span className="hubspot-dot"></span>t
-          </span>
-        </div>
-
-        {/* Loom */}
-        <div className="brand-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="9" />
-            <line x1="12" y1="3" x2="12" y2="21" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
-            <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
-          </svg>
-          <span>loom</span>
+        <div className="brands-track">
+          {[
+            // Expedia
+            {
+              name: 'Expedia',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" fill="currentColor" />
+                  <path fill="var(--bg)" d="M8 9h8v2H8zm0 4h6v2H8z" />
+                </svg>
+              )
+            },
+            // Asana
+            {
+              name: 'asana',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="7" r="4" />
+                  <circle cx="5" cy="16" r="3.5" />
+                  <circle cx="19" cy="16" r="3.5" />
+                </svg>
+              )
+            },
+            // Zenefits
+            {
+              name: 'zenefits',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="4,8 20,8" />
+                  <polyline points="8,12 16,12" />
+                  <polyline points="4,16 20,16" />
+                </svg>
+              )
+            },
+            // HubSpot
+            {
+              name: (
+                <span>
+                  HubSp<span className="hubspot-dot"></span>t
+                </span>
+              ),
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
+                  <circle cx="8.5" cy="8.5" r="2" />
+                  <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
+                </svg>
+              )
+            },
+            // Loom
+            {
+              name: 'loom',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="9" />
+                  <line x1="12" y1="3" x2="12" y2="21" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
+                  <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
+                </svg>
+              )
+            },
+            // Duplicate set for seamless looping scroll
+            {
+              name: 'Expedia',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" fill="currentColor" />
+                  <path fill="var(--bg)" d="M8 9h8v2H8zm0 4h6v2H8z" />
+                </svg>
+              )
+            },
+            {
+              name: 'asana',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="7" r="4" />
+                  <circle cx="5" cy="16" r="3.5" />
+                  <circle cx="19" cy="16" r="3.5" />
+                </svg>
+              )
+            },
+            {
+              name: 'zenefits',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="4,8 20,8" />
+                  <polyline points="8,12 16,12" />
+                  <polyline points="4,16 20,16" />
+                </svg>
+              )
+            },
+            {
+              name: (
+                <span>
+                  HubSp<span className="hubspot-dot"></span>t
+                </span>
+              ),
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
+                  <circle cx="8.5" cy="8.5" r="2" />
+                  <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
+                </svg>
+              )
+            },
+            {
+              name: 'loom',
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="9" />
+                  <line x1="12" y1="3" x2="12" y2="21" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
+                  <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
+                </svg>
+              )
+            }
+          ].map((brand, idx) => (
+            <div key={idx} className="brand-item">
+              {brand.icon}
+              <span>{brand.name}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
