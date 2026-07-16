@@ -56,57 +56,25 @@ export const HeroSection: React.FC = () => {
         </FadeIn>
       </header>
 
-      {/* 2. Main content area (Light mode conversion of the screenshot design) */}
-      <div className="flex-1 flex flex-col justify-center items-center px-6 text-center z-10 w-full max-w-6xl mx-auto pt-10 pb-8 relative">
-        {/* Soft radial glow in background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(239,255,0,0.1)_0%,transparent_60%)] pointer-events-none z-0"></div>
-        
-        {/* Soft glass bubble in background */}
-        <div className="absolute top-[35%] left-[30%] w-80 h-80 rounded-full bg-white/30 backdrop-blur-2xl border border-white/20 shadow-inner pointer-events-none z-0 transform -translate-x-1/2 -translate-y-1/2 hidden md:block"></div>
-
-        {/* 4-point Sparkle Star */}
-        <svg className="w-8 h-8 sm:w-12 sm:h-12 text-[#EFFF00] fill-current absolute left-[8%] sm:left-[15%] top-[52%] drop-shadow-sm pointer-events-none z-10 animate-pulse" viewBox="0 0 24 24">
-          <path d="M12 0 L15.5 8.5 L24 12 L15.5 15.5 L12 24 L8.5 15.5 L0 12 L8.5 8.5 Z" />
-        </svg>
-
-        {/* Top Badge */}
-        <FadeIn delay={0.15} y={20} className="z-10 mb-6">
-          <div className="bg-white/90 border border-zinc-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.02)] px-4 py-2 rounded-full text-[10px] sm:text-xs font-semibold text-zinc-700 flex items-center gap-2">
-            <span>🏆</span>
-            <span>Trusted by startups to craft $100M+ designs with</span>
-            <span className="flex items-center gap-1 border-l border-zinc-200 pl-2 ml-1">
-              {/* Figma logo circle */}
-              <span className="w-2.5 h-2.5 rounded-full bg-[#F24E1E]"></span>
-              {/* Sketch logo circle */}
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FDB300]"></span>
-              {/* Framer logo circle */}
-              <span className="w-2.5 h-2.5 rounded-full bg-[#0055FF]"></span>
-              {/* Adobe XD circle */}
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FF2BC2]"></span>
-            </span>
-          </div>
-        </FadeIn>
-
+      {/* 2. Main content area (Centered minimalist agency layout) */}
+      <div className="flex-1 flex flex-col justify-center items-center px-6 text-center z-10 w-full max-w-5xl mx-auto pt-16 pb-12">
         {/* Heading */}
-        <FadeIn delay={0.25} y={30} className="z-10 max-w-4xl mb-6 relative">
-          <h1 className="text-black text-[8vw] sm:text-[6.5vw] md:text-[5.5vw] lg:text-[4.8rem] font-black uppercase tracking-tighter leading-[1.05] text-center">
-            Creative Intelligence In<br />
-            Every Pixel
-            <span className="inline-block bg-[#EFFF00] text-black text-[9px] sm:text-[10px] font-black tracking-wider px-2 py-0.5 rounded shadow-sm border border-black/10 transform rotate-12 -translate-y-4 sm:-translate-y-8 ml-2 lowercase">
-              no code
-            </span>
+        <FadeIn delay={0.15} y={30} className="max-w-4xl mb-6">
+          <h1 className="text-black text-[9.5vw] sm:text-[7vw] md:text-[6vw] lg:text-[5rem] font-bold tracking-tight leading-[1.08] text-center">
+            Digital design &<br />
+            development agency
           </h1>
         </FadeIn>
 
         {/* Subtitle */}
-        <FadeIn delay={0.35} y={25} className="z-10 mb-8">
-          <p className="text-zinc-600 text-xs sm:text-sm md:text-base font-semibold uppercase tracking-wider">
-            We Craft <span className="text-[#FF5B22]">|</span> Designs For Businesses Worldwide.
+        <FadeIn delay={0.25} y={25} className="mb-10 max-w-2xl">
+          <p className="text-[#3A3A3C] text-sm sm:text-base md:text-lg font-normal leading-relaxed">
+            We help companies build scalable digital products with thoughtful design systems and carefully crafted development.
           </p>
         </FadeIn>
 
         {/* CTAs */}
-        <FadeIn delay={0.45} y={20} className="z-10 flex flex-row gap-4 mb-16">
+        <FadeIn delay={0.35} y={20} className="flex flex-row gap-4 mb-16">
           <button className="bg-black text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide shadow-md hover:bg-zinc-800 transition-all hover:scale-105 active:scale-95">
             Schedule Call
           </button>
