@@ -252,237 +252,217 @@ export const HeroSection: React.FC = () => {
       </nav>
 
       {/* 2. Hero Card */}
-      <section className="hero-card">
-        {/* Background Grid Pattern */}
-        <div className="hero-grid"></div>
+          <section className="hero-card">
+            {/* Background Grid Pattern */}
+            <div className="hero-grid"></div>
 
-        {/* Center Animated Icon Pipeline */}
-        <div className="icon-pipeline" ref={pipelineRef}>
-          {/* Laser beam SVG overlay */}
-          <svg className="beam-svg">
-            <defs>
-              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
+            {/* Center Animated Icon Pipeline */}
+            <div className="icon-pipeline" ref={pipelineRef}>
+              {/* Laser beam SVG overlay */}
+              <svg className="beam-svg">
+                <defs>
+                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="2" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
 
-              <linearGradient id="beam-gradient" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#FE6903" stopOpacity="0" />
-                <stop offset="20%" stopColor="#FE6903" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#fff" stopOpacity="1" />
-                <stop offset="80%" stopColor="#FE6903" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#FE6903" stopOpacity="0" />
-              </linearGradient>
-            </defs>
+                  <linearGradient id="beam-gradient" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#FE6903" stopOpacity="0" />
+                    <stop offset="20%" stopColor="#FE6903" stopOpacity="0.8" />
+                    <stop offset="50%" stopColor="#fff" stopOpacity="1" />
+                    <stop offset="80%" stopColor="#FE6903" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#FE6903" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
 
-            {/* Glowing outer beam path */}
-            <path
-              ref={beamGlowRef}
-              stroke="url(#beam-gradient)"
-              strokeWidth="2"
-              fill="none"
-              filter="url(#glow)"
-              style={{ opacity: 0.6, transition: 'opacity 0.2s ease' }}
-            />
-            {/* Core inner beam path */}
-            <path
-              ref={beamCoreRef}
-              stroke="url(#beam-gradient)"
-              strokeWidth="0.8"
-              fill="none"
-              style={{ transition: 'opacity 0.2s ease' }}
-            />
-          </svg>
-
-          {/* Left Node: Stack (Layers Icon) */}
-          <div className="icon-node node-light-right" id="node-stack" ref={nodeStackRef}>
-            <svg viewBox="0 0 24 24">
-              <polygon points="12 2 2 7 12 12 22 7 12 2" />
-              <polyline points="2 17 12 22 22 17" />
-              <polyline points="2 12 12 17 22 12" />
-            </svg>
-          </div>
-
-          {/* Connection Line Left */}
-          <div className="pipeline-line"></div>
-
-          {/* Center node wrapper */}
-          <div style={{ position: 'relative' }}>
-            {/* Splash Glow */}
-            <div className="splash" ref={splashRef}></div>
-
-            {/* Center Node: Xero logo */}
-            <div className="icon-node-center" id="node-x" ref={nodeXRef}>
-              <svg viewBox="0 0 40 40">
-                <path d="M11 9 L17 9 L29 31 L23 31 Z" fill="currentColor" />
-                <path d="M29 9 L23 9 L17 21 L20 26 Z" fill="currentColor" />
-                <path d="M14 26 L11 31 L17 31 L20 26 Z" fill="currentColor" />
+                {/* Glowing outer beam path */}
+                <path
+                  ref={beamGlowRef}
+                  stroke="url(#beam-gradient)"
+                  strokeWidth="2"
+                  fill="none"
+                  filter="url(#glow)"
+                  style={{ opacity: 0.6, transition: 'opacity 0.2s ease' }}
+                />
+                {/* Core inner beam path */}
+                <path
+                  ref={beamCoreRef}
+                  stroke="url(#beam-gradient)"
+                  strokeWidth="0.8"
+                  fill="none"
+                  style={{ transition: 'opacity 0.2s ease' }}
+                />
               </svg>
+
+              {/* Left Node: Stack (Layers Icon) */}
+              <div className="icon-node node-light-right" id="node-stack" ref={nodeStackRef}>
+                <svg viewBox="0 0 24 24">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                  <polyline points="2 17 12 22 22 17" />
+                  <polyline points="2 12 12 17 22 12" />
+                </svg>
+              </div>
+
+              {/* Connection Line Left */}
+              <div className="pipeline-line"></div>
+
+              {/* Center node wrapper */}
+              <div style={{ position: 'relative' }}>
+                {/* Splash Glow */}
+                <div className="splash" ref={splashRef}></div>
+
+                {/* Center Node: Xero logo */}
+                <div className="icon-node-center" id="node-x" ref={nodeXRef}>
+                  <svg viewBox="0 0 40 40">
+                    <path d="M11 9 L17 9 L29 31 L23 31 Z" fill="currentColor" />
+                    <path d="M29 9 L23 9 L17 21 L20 26 Z" fill="currentColor" />
+                    <path d="M14 26 L11 31 L17 31 L20 26 Z" fill="currentColor" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Connection Line Right */}
+              <div className="pipeline-line right"></div>
+
+              {/* Right Node: Shield (Shield Check Icon) */}
+              <div className="icon-node node-light-left" id="node-shield" ref={nodeShieldRef}>
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Glowing Widespread Radial Gradients (Wraps left, right, and bottom borders) */}
+            <div className="glow-container select-none pointer-events-none"></div>
+
+            {/* Content stack */}
+            <div className="hero-content z-10">
+              {/* Badge */}
+              <div className="hero-badge">
+                <span className="badge-text">WE ARE ORCODIX</span>
+              </div>
+
+              {/* Slogan locked to 2 lines, split typography colors */}
+              <h1 className="hero-heading">
+                Digital design <span className="text-orange">&amp;</span>
+                <br />
+                development <span className="text-orange">agency</span>
+              </h1>
+
+              {/* Secondary CTA Sub-text */}
+              <p className="hero-subtext">
+                WE HELP CLIENTS STRENGTHEN AND CONVERT DIGITAL EXPERIENCES THROUGH PREMIUM 3D CGI AND WEB DEVELOPMENT.
+              </p>
+            </div>
+          </section>
+
+          {/* 3. Brands Marquee */}
+          <div className="brands-marquee-wrapper">
+            <div className="brands-track">
+              {[
+                {
+                  name: 'dribbble',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m-13.43-8.8C9.56 12 15.02 9.56 21.43 8.35m-18.27 7.23c5.38-2.03 10.02.58 13.43 5.67" />
+                    </svg>
+                  )
+                },
+                {
+                  name: 'behance',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M6 9h3a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6V9zm0 4h4.5a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6v-4z" />
+                      <line x1="14" y1="9" x2="18" y2="9" />
+                      <path d="M14 13.5a2.5 2.5 0 0 0 5 0" />
+                    </svg>
+                  )
+                },
+                {
+                  name: (
+                    <span>
+                      HubSp<span className="hubspot-dot"></span>t
+                    </span>
+                  ),
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
+                      <circle cx="8.5" cy="8.5" r="2" />
+                      <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
+                    </svg>
+                  )
+                },
+                {
+                  name: 'loom',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="9" />
+                      <line x1="12" y1="3" x2="12" y2="21" />
+                      <line x1="3" y1="12" x2="21" y2="12" />
+                      <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
+                      <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
+                    </svg>
+                  )
+                },
+                {
+                  name: 'dribbble',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m-13.43-8.8C9.56 12 15.02 9.56 21.43 8.35m-18.27 7.23c5.38-2.03 10.02.58 13.43 5.67" />
+                    </svg>
+                  )
+                },
+                {
+                  name: 'behance',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M6 9h3a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6V9zm0 4h4.5a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6v-4z" />
+                      <line x1="14" y1="9" x2="18" y2="9" />
+                      <path d="M14 13.5a2.5 2.5 0 0 0 5 0" />
+                    </svg>
+                  )
+                },
+                {
+                  name: (
+                    <span>
+                      HubSp<span className="hubspot-dot"></span>t
+                    </span>
+                  ),
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
+                      <circle cx="8.5" cy="8.5" r="2" />
+                      <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
+                    </svg>
+                  )
+                },
+                {
+                  name: 'loom',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="9" />
+                      <line x1="12" y1="3" x2="12" y2="21" />
+                      <line x1="3" y1="12" x2="21" y2="12" />
+                      <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
+                      <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
+                    </svg>
+                  )
+                }
+              ].map((brand, idx) => (
+                <div key={idx} className="brand-item">
+                  {brand.icon}
+                  <span>{brand.name}</span>
+                </div>
+              ))}
             </div>
           </div>
-
-          {/* Connection Line Right */}
-          <div className="pipeline-line right"></div>
-
-          {/* Right Node: Shield (Shield Check Icon) */}
-          <div className="icon-node node-light-left" id="node-shield" ref={nodeShieldRef}>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              <polyline points="9 12 11 14 15 10" />
-            </svg>
-          </div>
         </div>
-
-        {/* Hero Text */}
-        <div className="hero-content">
-          <h1 className="hero-heading">
-            Digital design <span className="text-orange">&</span>
-            <br />
-            <span style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
-              development <span className="text-orange">agency</span>
-            </span>
-          </h1>
-          <p className="hero-sub">
-            Fully managed data encrypting service and annotation
-            <br />
-            platform for teams of all industries.
-          </p>
-          <a href="#get-started" className="btn-cta">
-            Get Started
-          </a>
-        </div>
-      </section>
-
-      {/* 3. Brands Row */}
-      <div className="brands">
-        <div className="brands-track">
-          {[
-            // Expedia
-            {
-              name: 'Expedia',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="12" r="10" fill="currentColor" />
-                  <path fill="var(--bg)" d="M8 9h8v2H8zm0 4h6v2H8z" />
-                </svg>
-              )
-            },
-            // Asana
-            {
-              name: 'asana',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="7" r="4" />
-                  <circle cx="5" cy="16" r="3.5" />
-                  <circle cx="19" cy="16" r="3.5" />
-                </svg>
-              )
-            },
-            // Zenefits
-            {
-              name: 'zenefits',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="4,8 20,8" />
-                  <polyline points="8,12 16,12" />
-                  <polyline points="4,16 20,16" />
-                </svg>
-              )
-            },
-            // HubSpot
-            {
-              name: (
-                <span>
-                  HubSp<span className="hubspot-dot"></span>t
-                </span>
-              ),
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
-                  <circle cx="8.5" cy="8.5" r="2" />
-                  <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
-                </svg>
-              )
-            },
-            // Loom
-            {
-              name: 'loom',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="9" />
-                  <line x1="12" y1="3" x2="12" y2="21" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
-                  <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
-                </svg>
-              )
-            },
-            // Duplicate set for seamless looping scroll
-            {
-              name: 'Expedia',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="12" r="10" fill="currentColor" />
-                  <path fill="var(--bg)" d="M8 9h8v2H8zm0 4h6v2H8z" />
-                </svg>
-              )
-            },
-            {
-              name: 'asana',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="7" r="4" />
-                  <circle cx="5" cy="16" r="3.5" />
-                  <circle cx="19" cy="16" r="3.5" />
-                </svg>
-              )
-            },
-            {
-              name: 'zenefits',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="4,8 20,8" />
-                  <polyline points="8,12 16,12" />
-                  <polyline points="4,16 20,16" />
-                </svg>
-              )
-            },
-            {
-              name: (
-                <span>
-                  HubSp<span className="hubspot-dot"></span>t
-                </span>
-              ),
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
-                  <circle cx="8.5" cy="8.5" r="2" />
-                  <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
-                </svg>
-              )
-            },
-            {
-              name: 'loom',
-              icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="9" />
-                  <line x1="12" y1="3" x2="12" y2="21" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
-                  <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
-                </svg>
-              )
-            }
-          ].map((brand, idx) => (
-            <div key={idx} className="brand-item">
-              {brand.icon}
-              <span>{brand.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+      );
+    };
 
 export default HeroSection;

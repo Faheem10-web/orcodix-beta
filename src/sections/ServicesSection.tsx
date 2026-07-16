@@ -10,28 +10,23 @@ interface ServiceItem {
 const servicesData: ServiceItem[] = [
   {
     number: '01',
-    name: '3D Modeling',
-    description: 'Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.',
+    name: 'Web Development',
+    description: 'Crafting high-performance, responsive, and search-optimized web applications using modern frameworks and clean, maintainable code.',
   },
   {
     number: '02',
-    name: 'Rendering',
-    description: 'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.',
+    name: 'UI/UX Design',
+    description: 'Creating intuitive, user-centric interfaces and interactive user experiences based on deep research, wireframing, and interactive prototyping.',
   },
   {
     number: '03',
-    name: 'Motion Design',
-    description: 'Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.',
+    name: 'Mobile App Design',
+    description: 'Designing beautiful, functional mobile application interfaces for iOS and Android, focusing on seamless user flows and platform guidelines.',
   },
   {
     number: '04',
     name: 'Branding',
-    description: 'Crafting cohesive visual identities -- from logos to full brand systems -- that communicate a clear and memorable presence.',
-  },
-  {
-    number: '05',
-    name: 'Web Design',
-    description: 'Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.',
+    description: 'Crafting cohesive visual identities, logotypes, typography guidelines, and brand systems that make your business stand out.',
   },
 ];
 
@@ -55,19 +50,19 @@ export const ServicesSection: React.FC = () => {
           </h2>
         </FadeIn>
 
-        {/* Services List */}
-        <div className="w-full flex flex-col">
+        {/* Services Grid (1 row = 2 services on desktop) */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-10 md:gap-x-16 gap-y-2 sm:gap-y-4">
           {servicesData.map((item, index) => (
             <FadeIn
               key={item.number}
               delay={index * 0.1}
               y={30}
-              className="flex flex-row items-start md:items-center gap-6 sm:gap-10 md:gap-16 py-8 sm:py-10 md:py-12 border-t border-[rgba(12,12,12,0.15)] last:border-b border-[rgba(12,12,12,0.15)] w-full text-left"
+              className="flex flex-row items-start gap-5 sm:gap-8 py-6 sm:py-8 border-b border-[rgba(12,12,12,0.15)] w-full text-left"
             >
               {/* Left Number */}
               <span
-                className="font-black leading-none text-[#0C0C0C] select-none min-w-[60px] sm:min-w-[120px] md:min-w-[180px]"
-                style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}
+                className="font-black leading-none text-[#0C0C0C] select-none min-w-[50px] sm:min-w-[90px]"
+                style={{ fontSize: 'clamp(2.2rem, 6vw, 90px)' }}
               >
                 {item.number}
               </span>
@@ -75,14 +70,14 @@ export const ServicesSection: React.FC = () => {
               {/* Right: Title & Description */}
               <div className="flex flex-col gap-2 flex-grow">
                 <h3
-                  className="font-medium uppercase text-[#0C0C0C] leading-tight"
-                  style={{ fontSize: 'clamp(1rem, 2.2vw, 2.1rem)' }}
+                  className="font-semibold uppercase text-[#0C0C0C] leading-tight"
+                  style={{ fontSize: 'clamp(1rem, 1.8vw, 1.5rem)' }}
                 >
                   {item.name}
                 </h3>
                 <p
                   className="font-light text-[#0C0C0C]/60 leading-relaxed max-w-2xl"
-                  style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.25rem)' }}
+                  style={{ fontSize: 'clamp(0.85rem, 1.3vw, 1.05rem)' }}
                 >
                   {item.description}
                 </p>

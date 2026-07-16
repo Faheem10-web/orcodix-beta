@@ -2,10 +2,21 @@ import React from 'react';
 import { FadeIn } from '../components/FadeIn';
 
 const projectImages = [
-  'https://i.pinimg.com/1200x/49/ec/fa/49ecfa0b2a949a3f390301cfcb7ea9aa.jpg',
-  'https://i.pinimg.com/1200x/11/56/19/11561960238a473eee818359e1d61711.jpg',
-  'https://i.pinimg.com/1200x/9f/86/d3/9f86d3dc24d269d8cbb6a66c5b33bca2.jpg',
-  'https://i.pinimg.com/1200x/20/b3/13/20b313c8068d5dd61f80066ecbab7d2f.jpg',
+  'https://i.pinimg.com/736x/04/ac/39/04ac39cbf298261a4ef257a3f699f81c.jpg',
+  'https://i.pinimg.com/1200x/f5/9c/db/f59cdb86fa2eb7c4279845c163cf6f84.jpg',
+  'https://i.pinimg.com/1200x/08/83/7e/08837e6e89d1787a7e7308b8a2a0e494.jpg',
+  'https://i.pinimg.com/1200x/3d/53/5c/3d535ce9473376bb152d188316d49836.jpg',
+  'https://i.pinimg.com/736x/f8/de/29/f8de29688c04d6a1f95032116fe6f8b4.jpg',
+  'https://i.pinimg.com/736x/06/a0/2f/06a02fbb27a79d1230ac156fa98e659f.jpg',
+];
+
+const projectTitles = [
+  'Eco Shade',
+  'Metallic Abstract',
+  'Studio Desk',
+  'Creative Workspace',
+  'Glassmorphic Interior',
+  'Architectural Draft',
 ];
 
 export const ProjectsSection: React.FC = () => {
@@ -16,41 +27,67 @@ export const ProjectsSection: React.FC = () => {
     >
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         {/* Section Heading with VIEW ALL Button */}
-        <div className="w-full flex flex-row items-center justify-between mb-12 sm:mb-16 relative px-2">
-          {/* Empty left space to balance center heading alignment on desktop */}
-          <div className="w-24 hidden md:block" />
-          
-          <FadeIn delay={0} y={30} className="flex-1 text-center">
+        <div className="w-full flex flex-row items-center justify-between mb-12 sm:mb-16 px-2">
+          <FadeIn delay={0} y={30}>
             <h2
-              className="hero-heading font-extrabold uppercase leading-none tracking-tight text-center"
-              style={{ fontSize: 'clamp(1.8rem, 5vw, 4.5rem)' }}
+              className="hero-heading font-extrabold uppercase leading-none tracking-tight text-left"
+              style={{ 
+                fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+                fontFamily: "'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+              }}
             >
               Featured Projects
             </h2>
           </FadeIn>
           
           <FadeIn delay={0.1} y={30}>
-            <button className="border border-[#EFFF00]/40 text-[#EFFF00] hover:bg-[#EFFF00]/10 text-[10px] md:text-xs font-bold tracking-wider px-4 py-2 rounded-lg transition-all hover:scale-105 active:scale-95 uppercase">
+            <button className="border border-[#FE6903] text-[#FE6903] hover:bg-[#FE6903]/10 text-[10px] md:text-xs font-bold tracking-widest px-6 py-2.5 rounded-full transition-all hover:scale-105 active:scale-95 uppercase cursor-pointer">
               View All
             </button>
           </FadeIn>
         </div>
 
-        {/* 2 Column, 2 Row Grid */}
+        {/* 2 Column Grid (All cards uniform size) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
           {projectImages.map((src, index) => (
             <FadeIn
               key={index}
               delay={index * 0.15}
               y={40}
-              className="w-full overflow-hidden rounded-[24px] sm:rounded-[32px] shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:scale-[1.015] transition-all duration-300 cursor-pointer"
+              className="group relative w-full overflow-hidden rounded-[24px] sm:rounded-[32px] shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:scale-[1.015] transition-all duration-300 cursor-pointer"
+              style={{ aspectRatio: '4/3' }}
             >
+              {/* Project Image with hover zoom */}
               <img
                 src={src}
-                alt={`Project Mockup ${index + 1}`}
-                className="w-full h-auto object-cover select-none pointer-events-none"
+                alt={projectTitles[index]}
+                className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-500 group-hover:scale-105"
                 draggable="false"
               />
+
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6 sm:p-8">
+                {/* Title */}
+                <span className="text-white font-extrabold uppercase tracking-wider text-sm sm:text-base md:text-lg">
+                  {projectTitles[index]}
+                </span>
+
+                {/* Circular Arrow Icon */}
+                <div 
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#FE6903] flex items-center justify-center text-[#FE6903] transition-all duration-300 hover:bg-[#FE6903] hover:text-black"
+                  style={{ minWidth: '40px' }}
+                >
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </div>
+              </div>
             </FadeIn>
           ))}
         </div>

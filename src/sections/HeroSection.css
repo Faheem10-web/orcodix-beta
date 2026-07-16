@@ -164,17 +164,22 @@
   inset: 0;
   background:
     radial-gradient(circle at 50% -70%,
-      transparent 68%,
-      rgba(254,105,3,0.01) 71%,
-      rgba(254,105,3,0.03) 74%,
-      rgba(254,105,3,0.06) 77%,
-      rgba(254,105,3,0.12) 80%,
-      rgba(254,105,3,0.22) 83%,
-      rgba(254,105,3,0.36) 86%,
-      rgba(254,105,3,0.52) 89%,
-      rgba(254,105,3,0.72) 92%,
-      #ffffff 96%),
-    radial-gradient(circle at 50% 35%, rgba(254,105,3,0.04) 0%, transparent 45%);
+      transparent 60%,
+      rgba(254,105,3,0.03) 63%,
+      rgba(254,105,3,0.08) 65%,
+      rgba(254,105,3,0.16) 67%,
+      rgba(254,105,3,0.28) 69%,
+      rgba(254,105,3,0.40) 71%,
+      rgba(254,105,3,0.52) 73%,
+      rgba(254,105,3,0.64) 75%,
+      rgba(254,105,3,0.74) 77%,
+      rgba(254,105,3,0.82) 79%,
+      rgba(254,105,3,0.92) 85%,
+      rgba(254,105,3,0.88) 87%,
+      rgba(255,210,180,0.92) 91%,
+      rgba(255,240,230,0.98) 93%,
+      #ffffff 95%),
+    radial-gradient(circle at 50% 35%, rgba(254,105,3,0.08) 0%, transparent 50%);
   z-index: 0;
   pointer-events: none;
 }
