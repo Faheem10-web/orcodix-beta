@@ -15,7 +15,11 @@ const projectTitles = [
   'Studio Desk',
 ];
 
-export const ProjectsSection: React.FC = () => {
+interface ProjectsSectionProps {
+  onViewAll?: () => void;
+}
+
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewAll }) => {
   return (
     <section
       id="projects"
@@ -37,7 +41,10 @@ export const ProjectsSection: React.FC = () => {
           </FadeIn>
           
           <FadeIn delay={0.1} y={30}>
-            <button className="border border-[#FE6903] text-[#FE6903] hover:bg-[#FE6903]/10 text-[10px] md:text-xs font-bold tracking-widest px-6 py-2.5 rounded-full transition-all hover:scale-105 active:scale-95 uppercase cursor-pointer">
+            <button
+              onClick={onViewAll}
+              className="border border-[#FE6903] text-[#FE6903] hover:bg-[#FE6903]/10 text-[10px] md:text-xs font-bold tracking-widest px-6 py-2.5 rounded-full transition-all hover:scale-105 active:scale-95 uppercase cursor-pointer"
+            >
               View All
             </button>
           </FadeIn>

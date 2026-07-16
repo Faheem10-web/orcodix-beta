@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HeroSection.css';
 
-export const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  activeTab?: 'home' | 'works';
+  setActiveTab?: (tab: 'home' | 'works') => void;
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({ activeTab = 'home', setActiveTab }) => {
   const [menuActive, setMenuActive] = useState(false);
 
   // Animation Refs
@@ -173,6 +178,9 @@ export const HeroSection: React.FC = () => {
     };
   }, []);
 
+  const isHomeActive = activeTab === 'home';
+  const isWorksActive = activeTab === 'works';
+
   return (
     <div className="xero-hero-root">
       {/* 1. Navbar */}
@@ -196,19 +204,79 @@ export const HeroSection: React.FC = () => {
         <div className={`nav-menu ${menuActive ? 'active' : ''}`}>
           {/* Centered Pill Menu (Desktop only) */}
           <div className="nav-pill-menu">
-            <a href="#root" className="pill-item active" onClick={() => setMenuActive(false)}>
+            <a 
+              href="#root" 
+              className={`pill-item ${isHomeActive ? 'active' : ''}`} 
+              onClick={(e) => {
+                e.preventDefault();
+                setMenuActive(false);
+                if (setActiveTab) setActiveTab('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
               Home
             </a>
-            <a href="#projects" className="pill-item" onClick={() => setMenuActive(false)}>
+            <a 
+              href="#projects" 
+              className={`pill-item ${isWorksActive ? 'active' : ''}`} 
+              onClick={(e) => {
+                e.preventDefault();
+                setMenuActive(false);
+                if (setActiveTab) setActiveTab('works');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
               Works
             </a>
-            <a href="#services" className="pill-item" onClick={() => setMenuActive(false)}>
+            <a 
+              href="#services" 
+              className="pill-item" 
+              onClick={(e) => {
+                setMenuActive(false);
+                if (setActiveTab && activeTab === 'works') {
+                  setActiveTab('home');
+                  e.preventDefault();
+                  setTimeout(() => {
+                    const el = document.getElementById('services');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }
+              }}
+            >
               Services
             </a>
-            <a href="#about" className="pill-item" onClick={() => setMenuActive(false)}>
+            <a 
+              href="#about" 
+              className="pill-item" 
+              onClick={(e) => {
+                setMenuActive(false);
+                if (setActiveTab && activeTab === 'works') {
+                  setActiveTab('home');
+                  e.preventDefault();
+                  setTimeout(() => {
+                    const el = document.getElementById('about');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }
+              }}
+            >
               About
             </a>
-            <a href="#contact" className="pill-item" onClick={() => setMenuActive(false)}>
+            <a 
+              href="#contact" 
+              className="pill-item" 
+              onClick={(e) => {
+                setMenuActive(false);
+                if (setActiveTab && activeTab === 'works') {
+                  setActiveTab('home');
+                  e.preventDefault();
+                  setTimeout(() => {
+                    const el = document.getElementById('contact');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }
+              }}
+            >
               Contact
             </a>
           </div>
@@ -216,19 +284,79 @@ export const HeroSection: React.FC = () => {
           <div className="nav-actions">
             {/* Stacked menu links (Mobile only) */}
             <div className="mobile-links-only">
-              <a href="#root" className="mobile-link" onClick={() => setMenuActive(false)}>
+              <a 
+                href="#root" 
+                className={`mobile-link ${isHomeActive ? 'active' : ''}`} 
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuActive(false);
+                  if (setActiveTab) setActiveTab('home');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
                 Home
               </a>
-              <a href="#projects" className="mobile-link" onClick={() => setMenuActive(false)}>
+              <a 
+                href="#projects" 
+                className={`mobile-link ${isWorksActive ? 'active' : ''}`} 
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuActive(false);
+                  if (setActiveTab) setActiveTab('works');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
                 Works
               </a>
-              <a href="#services" className="mobile-link" onClick={() => setMenuActive(false)}>
+              <a 
+                href="#services" 
+                className="mobile-link" 
+                onClick={(e) => {
+                  setMenuActive(false);
+                  if (setActiveTab && activeTab === 'works') {
+                    setActiveTab('home');
+                    e.preventDefault();
+                    setTimeout(() => {
+                      const el = document.getElementById('services');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }
+                }}
+              >
                 Services
               </a>
-              <a href="#about" className="mobile-link" onClick={() => setMenuActive(false)}>
+              <a 
+                href="#about" 
+                className="mobile-link" 
+                onClick={(e) => {
+                  setMenuActive(false);
+                  if (setActiveTab && activeTab === 'works') {
+                    setActiveTab('home');
+                    e.preventDefault();
+                    setTimeout(() => {
+                      const el = document.getElementById('about');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }
+                }}
+              >
                 About
               </a>
-              <a href="#contact" className="mobile-link" onClick={() => setMenuActive(false)}>
+              <a 
+                href="#contact" 
+                className="mobile-link" 
+                onClick={(e) => {
+                  setMenuActive(false);
+                  if (setActiveTab && activeTab === 'works') {
+                    setActiveTab('home');
+                    e.preventDefault();
+                    setTimeout(() => {
+                      const el = document.getElementById('contact');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }
+                }}
+              >
                 Contact
               </a>
             </div>
@@ -251,7 +379,9 @@ export const HeroSection: React.FC = () => {
         </div>
       </nav>
 
-      {/* 2. Hero Card */}
+      {activeTab === 'home' && (
+        <>
+          {/* 2. Hero Card */}
           <section className="hero-card">
             {/* Background Grid Pattern */}
             <div className="hero-grid"></div>
@@ -355,114 +485,116 @@ export const HeroSection: React.FC = () => {
                 WE HELP CLIENTS STRENGTHEN AND CONVERT DIGITAL EXPERIENCES THROUGH PREMIUM 3D CGI AND WEB DEVELOPMENT.
               </p>
             </div>
-          </section>
 
-          {/* 3. Brands Marquee */}
-          <div className="brands-marquee-wrapper">
-            <div className="brands-track">
-              {[
-                {
-                  name: 'dribbble',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m-13.43-8.8C9.56 12 15.02 9.56 21.43 8.35m-18.27 7.23c5.38-2.03 10.02.58 13.43 5.67" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'behance',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M6 9h3a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6V9zm0 4h4.5a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6v-4z" />
-                      <line x1="14" y1="9" x2="18" y2="9" />
-                      <path d="M14 13.5a2.5 2.5 0 0 0 5 0" />
-                    </svg>
-                  )
-                },
-                {
-                  name: (
-                    <span>
-                      HubSp<span className="hubspot-dot"></span>t
-                    </span>
-                  ),
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
-                      <circle cx="8.5" cy="8.5" r="2" />
-                      <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'loom',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="9" />
-                      <line x1="12" y1="3" x2="12" y2="21" />
-                      <line x1="3" y1="12" x2="21" y2="12" />
-                      <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
-                      <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'dribbble',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m-13.43-8.8C9.56 12 15.02 9.56 21.43 8.35m-18.27 7.23c5.38-2.03 10.02.58 13.43 5.67" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'behance',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M6 9h3a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6V9zm0 4h4.5a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6v-4z" />
-                      <line x1="14" y1="9" x2="18" y2="9" />
-                      <path d="M14 13.5a2.5 2.5 0 0 0 5 0" />
-                    </svg>
-                  )
-                },
-                {
-                  name: (
-                    <span>
-                      HubSp<span className="hubspot-dot"></span>t
-                    </span>
-                  ),
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
-                      <circle cx="8.5" cy="8.5" r="2" />
-                      <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
-                    </svg>
-                  )
-                },
-                {
-                  name: 'loom',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="9" />
-                      <line x1="12" y1="3" x2="12" y2="21" />
-                      <line x1="3" y1="12" x2="21" y2="12" />
-                      <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
-                      <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
-                    </svg>
-                  )
-                }
-              ].map((brand, idx) => (
-                <div key={idx} className="brand-item">
-                  {brand.icon}
-                  <span>{brand.name}</span>
-                </div>
-              ))}
+            {/* 3. Brands Marquee */}
+            <div className="brands">
+              <div className="brands-track">
+                {[
+                  {
+                    name: 'dribbble',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m-13.43-8.8C9.56 12 15.02 9.56 21.43 8.35m-18.27 7.23c5.38-2.03 10.02.58 13.43 5.67" />
+                      </svg>
+                    )
+                  },
+                  {
+                    name: 'behance',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M6 9h3a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6V9zm0 4h4.5a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6v-4z" />
+                        <line x1="14" y1="9" x2="18" y2="9" />
+                        <path d="M14 13.5a2.5 2.5 0 0 0 5 0" />
+                      </svg>
+                    )
+                  },
+                  {
+                    name: (
+                      <span>
+                        HubSp<span className="hubspot-dot"></span>t
+                      </span>
+                    ),
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
+                        <circle cx="8.5" cy="8.5" r="2" />
+                        <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
+                      </svg>
+                    )
+                  },
+                  {
+                    name: 'loom',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <line x1="12" y1="3" x2="12" y2="21" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
+                        <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
+                      </svg>
+                    )
+                  },
+                  {
+                    name: 'dribbble',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m-13.43-8.8C9.56 12 15.02 9.56 21.43 8.35m-18.27 7.23c5.38-2.03 10.02.58 13.43 5.67" />
+                      </svg>
+                    )
+                  },
+                  {
+                    name: 'behance',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M6 9h3a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6V9zm0 4h4.5a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2H6v-4z" />
+                        <line x1="14" y1="9" x2="18" y2="9" />
+                        <path d="M14 13.5a2.5 2.5 0 0 0 5 0" />
+                      </svg>
+                    )
+                  },
+                  {
+                    name: (
+                      <span>
+                        HubSp<span className="hubspot-dot"></span>t
+                      </span>
+                    ),
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="15.5" cy="8.5" r="2.5" fill="currentColor" />
+                        <circle cx="8.5" cy="8.5" r="2" />
+                        <path d="M8.5 10.5 L8.5 16.5 C8.5 18.5, 15.5 18.5, 15.5 16.5 L15.5 11" />
+                      </svg>
+                    )
+                  },
+                  {
+                    name: 'loom',
+                    icon: (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <line x1="12" y1="3" x2="12" y2="21" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
+                        <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
+                      </svg>
+                    )
+                  }
+                ].map((brand, idx) => (
+                  <div key={idx} className="brand-item">
+                    {brand.icon}
+                    <span>{brand.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
-      );
-    };
+          </section>
+        </>
+      )}
+    </div>
+  );
+};
 
 export default HeroSection;

@@ -6,6 +6,7 @@ import AboutSection from './sections/AboutSection';
 import ServicesSection from './sections/ServicesSection';
 import ProjectsSection from './sections/ProjectsSection';
 import FaqSection from './sections/FaqSection';
+import WorksPage from './sections/WorksPage';
 import { ContactButton } from './components/ContactButton';
 import { FadeIn } from './components/FadeIn';
 
@@ -55,6 +56,7 @@ const Preloader: React.FC = () => {
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'home' | 'works'>('home');
 
   useEffect(() => {
     // Hide loading screen after 1.5s
@@ -84,22 +86,28 @@ function App() {
       </AnimatePresence>
 
       {/* 1. Hero Section */}
-      <HeroSection />
+      <HeroSection activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {/* 2. Marquee Section */}
-      <MarqueeSection />
+      {activeTab === 'home' ? (
+        <>
+          {/* 2. Marquee Section */}
+          <MarqueeSection />
 
-      {/* 3. About Section */}
-      <AboutSection />
+          {/* 3. About Section */}
+          <AboutSection />
 
-      {/* 4. Services Section */}
-      <ServicesSection />
+          {/* 4. Services Section */}
+          <ServicesSection />
 
-      {/* 5. Projects Section */}
-      <ProjectsSection />
+          {/* 5. Projects Section */}
+          <ProjectsSection onViewAll={() => { setActiveTab('works'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
 
-      {/* 6. FAQ Section */}
-      <FaqSection />
+          {/* 6. FAQ Section */}
+          <FaqSection />
+        </>
+      ) : (
+        <WorksPage onBackToHome={() => { setActiveTab('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+      )}
 
       {/* 7. Footer / Contact Section */}
       <footer
