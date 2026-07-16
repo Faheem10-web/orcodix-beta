@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import HeroSection from './sections/HeroSection';
 import MarqueeSection from './sections/MarqueeSection';
 import AboutSection from './sections/AboutSection';
@@ -7,9 +8,80 @@ import ProjectsSection from './sections/ProjectsSection';
 import { ContactButton } from './components/ContactButton';
 import { FadeIn } from './components/FadeIn';
 
+const Preloader: React.FC = () => {
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ 
+        y: '-100vh',
+        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } 
+      }}
+      className="fixed inset-0 z-50 bg-[#FF5B22] flex flex-col justify-center items-center select-none"
+    >
+      <div className="flex flex-col items-center gap-6">
+        {/* Animated logo wrapper inside glass card */}
+        <motion.div
+          animate={{
+            scale: [1, 1.06, 1],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="flex items-center justify-center p-6 bg-white/10 rounded-3xl backdrop-blur-md border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+        >
+          <img src="/images/logo.png" alt="Logo" className="h-10 sm:h-12 w-auto object-contain" />
+        </motion.div>
+        
+        {/* Premium loader progress line */}
+        <div className="w-32 h-[3px] bg-black/10 rounded-full overflow-hidden relative">
+          <motion.div
+            initial={{ left: '-100%' }}
+            animate={{ left: '100%' }}
+            transition={{
+              repeat: Infinity,
+              duration: 1.2,
+              ease: 'easeInOut',
+            }}
+            className="absolute top-0 bottom-0 w-1/2 bg-white rounded-full"
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide loading screen after 1.5s
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Lock body scroll while loading
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [loading]);
+
   return (
     <div className="bg-[#0C0C0C] min-h-screen w-full overflow-x-clip text-[#D7E2EA] font-sans selection:bg-[#B600A8]/30 selection:text-[#white]">
+      <AnimatePresence mode="wait">
+        {loading && <Preloader key="loader" />}
+      </AnimatePresence>
+
       {/* 1. Hero Section */}
       <HeroSection />
 
