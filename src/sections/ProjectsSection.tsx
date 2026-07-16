@@ -6,9 +6,6 @@ const projectImages = [
   'https://i.pinimg.com/1200x/f5/9c/db/f59cdb86fa2eb7c4279845c163cf6f84.jpg',
   'https://i.pinimg.com/736x/48/aa/3f/48aa3f9cfec5be2d9a1aa2959c1d3d92.jpg',
   'https://i.pinimg.com/1200x/08/83/7e/08837e6e89d1787a7e7308b8a2a0e494.jpg',
-  'https://i.pinimg.com/1200x/3d/53/5c/3d535ce9473376bb152d188316d49836.jpg',
-  'https://i.pinimg.com/736x/f8/de/29/f8de29688c04d6a1f95032116fe6f8b4.jpg',
-  'https://i.pinimg.com/736x/06/a0/2f/06a02fbb27a79d1230ac156fa98e659f.jpg',
 ];
 
 const projectTitles = [
@@ -16,9 +13,6 @@ const projectTitles = [
   'Metallic Abstract',
   'Brutalist Space',
   'Studio Desk',
-  'Creative Workspace',
-  'Glassmorphic Interior',
-  'Architectural Draft',
 ];
 
 export const ProjectsSection: React.FC = () => {
@@ -51,52 +45,47 @@ export const ProjectsSection: React.FC = () => {
 
         {/* 2 Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-          {projectImages.map((src, index) => {
-            const isLast = index === projectImages.length - 1;
-            return (
-              <FadeIn
-                key={index}
-                delay={index * 0.15}
-                y={40}
-                className={`group relative w-full overflow-hidden rounded-[24px] sm:rounded-[32px] shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:scale-[1.015] transition-all duration-300 cursor-pointer ${
-                  isLast ? 'md:col-span-2' : ''
-                }`}
-                style={{ aspectRatio: isLast ? '21/9' : '4/3' }}
-              >
-                {/* Project Image with hover zoom */}
-                <img
-                  src={src}
-                  alt={projectTitles[index]}
-                  className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-500 group-hover:scale-105"
-                  draggable="false"
-                />
+          {projectImages.map((src, index) => (
+            <FadeIn
+              key={index}
+              delay={index * 0.15}
+              y={40}
+              className="group relative w-full overflow-hidden rounded-[24px] sm:rounded-[32px] shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:scale-[1.015] transition-all duration-300 cursor-pointer"
+              style={{ aspectRatio: '4/3' }}
+            >
+              {/* Project Image with hover zoom */}
+              <img
+                src={src}
+                alt={projectTitles[index]}
+                className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-500 group-hover:scale-105"
+                draggable="false"
+              />
 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6 sm:p-8">
-                  {/* Title */}
-                  <span className="text-white font-extrabold uppercase tracking-wider text-sm sm:text-base md:text-lg">
-                    {projectTitles[index]}
-                  </span>
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6 sm:p-8">
+                {/* Title */}
+                <span className="text-white font-extrabold uppercase tracking-wider text-sm sm:text-base md:text-lg">
+                  {projectTitles[index]}
+                </span>
 
-                  {/* Circular Arrow Icon */}
-                  <div 
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#FE6903] flex items-center justify-center text-[#FE6903] transition-all duration-300 hover:bg-[#FE6903] hover:text-black"
-                    style={{ minWidth: '40px' }}
+                {/* Circular Arrow Icon */}
+                <div 
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#FE6903] flex items-center justify-center text-[#FE6903] transition-all duration-300 hover:bg-[#FE6903] hover:text-black"
+                  style={{ minWidth: '40px' }}
+                >
+                  <svg
+                    className="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
                   >
-                    <svg
-                      className="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                    </svg>
-                  </div>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
                 </div>
-              </FadeIn>
-            );
-          })}
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
