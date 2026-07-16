@@ -31,7 +31,7 @@ const Preloader: React.FC = () => {
           }}
           className="flex items-center justify-center p-6 bg-white/10 rounded-3xl backdrop-blur-md border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
         >
-          <img src="/images/logo.png" alt="Logo" className="h-10 sm:h-12 w-auto object-contain" />
+          <img src="/images/Group 16.png" alt="Logo" className="h-16 sm:h-20 w-auto object-contain" />
         </motion.div>
         
         {/* Premium loader progress line */}
